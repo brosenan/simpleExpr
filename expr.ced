@@ -1,0 +1,8 @@
+'/bootstrap':defAtom(expr::'/bootstrap':type).
+'/bootstrap':signature(const(C)::expr,[C::'/bootstrap':number]).
+'/bootstrap':projection(const(C)::expr,'/bootstrap':horiz(['/bootstrap':lineBorder('/bootstrap':vis(C::'/bootstrap':number),2,cpi:rgb(192,192,192))])).
+'/bootstrap':adapter(C::'/bootstrap':number,const(C)::expr).
+'/bootstrap':signature(eval(Expr,Value)::'/bootstrap':pred,[Expr::expr,Value::'/bootstrap':number]).
+'/bootstrap':projection(eval(Expr,Value)::'/bootstrap':pred,'/bootstrap':horiz(['/bootstrap':vis(Expr::expr),'/bootstrap':label(!'evaluates to'),'/bootstrap':vis(Value::'/bootstrap':number)])).
+'/util':behavior(const(C)::expr,!'should evaluate to C', (eval(const(C),X),'/util':assertEqual(X,C,'/bootstrap':number))).
+eval(const(C),C):-builtin:true.
