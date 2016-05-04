@@ -1,0 +1,8 @@
+'/bootstrap':signature(plus(A,B)::expr,[A::expr,B::expr]).
+'/bootstrap':projection(plus(A,B)::expr,'/bootstrap':horiz(['/bootstrap':vis(A::expr),'/bootstrap':label(! (+)),'/bootstrap':vis(B::expr)])).
+'/util':behavior(plus(A,B)::expr,!'should evaluate to the sum of the values of A and B', (eval(plus(const(1),const(2)),X),'/util':assertEqual(X,3,'/bootstrap':number))).
+eval(plus(A,B),C):-eval(A,APrime),eval(B,BPrime),builtin:plus(APrime,BPrime,C).
+'/bootstrap':signature(mult(A,B)::expr,[A::expr,B::expr]).
+'/bootstrap':projection(mult(A,B)::expr,'/bootstrap':horiz(['/bootstrap':vis(A::expr),'/bootstrap':label(! (*)),'/bootstrap':vis(B::expr)])).
+'/util':behavior(mult(A,B)::expr,!'should evaluate to the product of the values of A and B', (eval(mult(const(2),const(3)),X),'/util':assertEqual(X,6,'/bootstrap':number))).
+eval(mult(A,B),C):-eval(A,APrime),eval(B,BPrime),builtin:mult(APrime,BPrime,C).

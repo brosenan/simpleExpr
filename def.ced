@@ -1,0 +1,10 @@
+'/bootstrap':signature(def(A,B)::'/bootstrap':statement,[A::expr,B::expr]).
+'/bootstrap':projection(def(A,B)::'/bootstrap':statement,'/bootstrap':horiz(['/bootstrap':vis(A::expr),'/bootstrap':label(!':='),'/bootstrap':vis(B::expr)])).
+'/bootstrap':defAtom(foo::expr).
+def(foo,const(2)).
+'/util':behavior(def(A,B)::'/bootstrap':statement,!'should define A as B', (eval(foo,X),'/util':assertEqual(X,2,'/bootstrap':number))).
+def(A,B)~>eval(A,V):-eval(B,V).
+'/bootstrap':signature(square(X)::expr,[X::expr]).
+'/bootstrap':projection(square(X)::expr,'/bootstrap':horiz(['/bootstrap':vis(X::expr),'/bootstrap':halfSize('/bootstrap':label(!'2'))],cpi:top)).
+'/util':behavior(square(X)::expr,!'should evaluate to the square of X', (eval(square(const(2)),Y),'/util':assertEqual(Y,4,'/bootstrap':number))).
+def(square(X),mult(X,X)).
