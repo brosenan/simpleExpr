@@ -1,0 +1,4 @@
+'/bootstrap':signature(fact(N)::expr,[N::expr]).
+'/bootstrap':projection(fact(N)::expr,'/bootstrap':horiz(['/bootstrap':label(! (!)),'/bootstrap':vis(N::expr)])).
+'/util':behavior(fact(N)::expr,!'should evaluate to the factorial of N', (eval(fact(const(4)),X),'/util':assertEqual(X,24,'/bootstrap':number))).
+def(fact(N),cond(ge(N,const(2)),mult(N,fact(annotation:parentheses(minus(N,const(1))))),const(1))).

@@ -1,0 +1,13 @@
+'/bootstrap':signature(ge(A,B)::'/bootstrap':pred,[A::expr,B::expr]).
+'/bootstrap':projection(ge(A,B)::'/bootstrap':pred,'/bootstrap':horiz(['/bootstrap':vis(A::expr),'/bootstrap':symbol(8805),'/bootstrap':vis(B::expr)])).
+'/bootstrap':alias(ge(A,B)::'/bootstrap':pred,! (>=)).
+'/util':behavior(ge(A,B)::'/bootstrap':pred,!'succeeds if A evaluates to a value greater than that B does',ge(const(2),const(1))).
+'/util':behavior(ge(A,B)::'/bootstrap':pred,!'fails if A<B',\+ge(const(1),const(2))).
+'/util':behavior(ge(A,B)::'/bootstrap':pred,!'succeeds if A and B evaluate to the same number',ge(const(2),plus(const(1),const(1)))).
+ge(A,B):-eval(A,APrime),eval(B,BPrime),APrime>BPrime.
+ge(A,B):-eval(A,V),eval(B,V).
+'/bootstrap':signature(cond(Cond,Then,Else)::expr,[Cond::'/bootstrap':pred,Then::expr,Else::expr]).
+'/bootstrap':projection(cond(Cond,Then,Else)::expr,'/bootstrap':horiz(['/bootstrap':brackets('/bootstrap':vert(['/bootstrap':horiz(['/bootstrap':vis(Then::expr),'/bootstrap':label(!'    '),'/bootstrap':vis(Cond::'/bootstrap':pred)]),'/bootstrap':horiz(['/bootstrap':vis(Else::expr),'/bootstrap':label(!'    '),'/bootstrap':label(!otherwise)])]),123,0)])).
+'/util':behavior(cond(Cond,Then,Else)::expr,!'should evaluate to Then if Cond holds', (eval(cond(builtin:true,const(1),const(2)),X),'/util':assertEqual(X,1,'/bootstrap':number))).
+'/util':behavior(cond(Cond,Then,Else)::expr,!'should evaluate to Else if Cond does not hold', (eval(cond(builtin:fail,const(1),const(2)),X),'/util':assertEqual(X,2,'/bootstrap':number))).
+eval(cond(Cond,Then,Else),V):-builtin:if(Cond,eval(Then,V),eval(Else,V)).

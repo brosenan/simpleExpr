@@ -6,3 +6,7 @@ eval(plus(A,B),C):-eval(A,APrime),eval(B,BPrime),builtin:plus(APrime,BPrime,C).
 '/bootstrap':projection(mult(A,B)::expr,'/bootstrap':horiz(['/bootstrap':vis(A::expr),'/bootstrap':label(! (*)),'/bootstrap':vis(B::expr)])).
 '/util':behavior(mult(A,B)::expr,!'should evaluate to the product of the values of A and B', (eval(mult(const(2),const(3)),X),'/util':assertEqual(X,6,'/bootstrap':number))).
 eval(mult(A,B),C):-eval(A,APrime),eval(B,BPrime),builtin:mult(APrime,BPrime,C).
+'/bootstrap':signature(minus(A,B)::expr,[A::expr,B::expr]).
+'/bootstrap':projection(minus(A,B)::expr,'/bootstrap':horiz(['/bootstrap':vis(A::expr),'/bootstrap':label(! (-)),'/bootstrap':vis(B::expr)])).
+'/util':behavior(minus(A,B)::expr,!'should evaluate to the difference between the values of A and B', (eval(minus(const(3),const(2)),X),'/util':assertEqual(X,1,'/bootstrap':number))).
+eval(minus(A,B),C):-eval(A,APrime),eval(B,BPrime),builtin:minus(APrime,BPrime,C).
